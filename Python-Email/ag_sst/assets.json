@@ -1,0 +1,1 @@
+{"column_types": {"sentence": "text", "label": "categorical"}, "label_column": "label", "problem_type": "binary", "eval_metric_name": "acc", "validation_metric_name": "acc", "output_shape": 2, "save_path": "./ag_sst\\", "pretrained_path": null, "version": "0.4.0"}

@@ -1,0 +1,60 @@
+model:
+  names:
+  - hf_text
+  hf_text:
+    checkpoint_name: google/electra-base-discriminator
+    data_types:
+    - text
+    tokenizer_name: hf_auto
+    max_text_len: 512
+    insert_sep: true
+    text_segment_num: 2
+    stochastic_chunk: false
+  fusion_mlp:
+    weight: 0.1
+    adapt_in_features: max
+    hidden_sizes:
+    - 128
+    activation: leaky_relu
+    drop_rate: 0.1
+    normalization: layer_norm
+    data_types: null
+data:
+  image: null
+  text: null
+  categorical:
+    minimum_cat_count: 100
+    maximum_num_cat: 20
+    convert_to_text: true
+  numerical:
+    convert_to_text: false
+    scaler_with_mean: true
+    scaler_with_std: true
+optimization:
+  optim_type: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.001
+  lr_choice: layerwise_decay
+  lr_decay: 0.9
+  lr_schedule: cosine_decay
+  max_epochs: 10
+  max_steps: -1
+  warmup_steps: 0.1
+  end_lr: 0
+  lr_mult: 1
+  patience: 10
+  val_check_interval: 0.5
+  top_k: 3
+env:
+  num_gpus: -1
+  num_nodes: 1
+  batch_size: 128
+  per_gpu_batch_size: 8
+  per_gpu_batch_size_evaluation: 64
+  precision: 16
+  num_workers: 2
+  num_workers_evaluation: 2
+  fast_dev_run: false
+  deterministic: false
+  auto_select_gpus: true
+  strategy: ddp_spawn
