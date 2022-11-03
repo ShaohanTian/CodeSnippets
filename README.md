@@ -2,4 +2,4 @@
 
 主要用于练习一些代码片段!
 
-Mianly for some coding tests !
+Mainly for some coding tests !
